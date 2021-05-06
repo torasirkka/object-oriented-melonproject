@@ -4,8 +4,8 @@
 # Recognize what methods to move to the super class.
 # Recognize which attributes that belong to international vs national.
 
-class AbstractMelonOrder():
 
+class AbstractMelonOrder:
     def __init__(self, species, qty, order_type, tax):
         """Initialize melon order attributes."""
         self.species = species
@@ -15,12 +15,11 @@ class AbstractMelonOrder():
         self.tax = tax
 
 
-
 class DomesticMelonOrder(AbstractMelonOrder):
     """A melon order within the USA."""
 
     def __init__(self, species, qty):
-        super().__init__(species, qty, 'domestic', 0.08)
+        super().__init__(species, qty, "domestic", 0.08)
         """Initialize melon order attributes."""
 
     def get_total(self):
@@ -40,15 +39,9 @@ class DomesticMelonOrder(AbstractMelonOrder):
 class InternationalMelonOrder(AbstractMelonOrder):
     """An international (non-US) melon order."""
 
-    def __init__(self, species, qty, country_code):
+    def __init__(self, species, qty):
+        super().__init__(species, qty, "international", 0.17)
         """Initialize melon order attributes."""
-
-        self.species = species
-        self.qty = qty
-        self.country_code = country_code
-        self.shipped = False
-        self.order_type = "international"
-        self.tax = 0.17
 
     def get_total(self):
         """Calculate price, including tax."""
