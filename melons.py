@@ -39,9 +39,10 @@ class DomesticMelonOrder(AbstractMelonOrder):
 class InternationalMelonOrder(AbstractMelonOrder):
     """An international (non-US) melon order."""
 
-    def __init__(self, species, qty):
+    def __init__(self, species, qty, country_code):
         super().__init__(species, qty, "international", 0.17)
         """Initialize melon order attributes."""
+        self.country_code = country_code
 
     def get_total(self):
         """Calculate price, including tax."""
